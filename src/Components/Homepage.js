@@ -9,13 +9,13 @@ function Homepage () {
 
     // React useEffect hook
 
-    // componentDidMount example
+    // componentDidMount example (api calls or functions when the page loads)
     React.useEffect(() => {
         console.log('we are fetching our products')
         fetchProducts()
     }, []);
 
-    // runs every render
+    // runs every render (runs every time props or state changes)
     // React.useEffect(() => {});
 
     // runs after update of products but can be used for any state value
