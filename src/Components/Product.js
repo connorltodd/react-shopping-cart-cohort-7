@@ -3,12 +3,11 @@ import './Product.css';
 export default function Product (props) {
     console.log(props)
     return (
-        <div>
+        <div className='product'>
             <img className="product-image" src={props.product.image} />
-            <h2>{props.product.title}</h2>
-            <p>{props.product.category}</p>
-            <p>{props.product.price}</p>
+            <h2 className="product-title">{props.product.title}</h2>
+            <p className="product-category">{props.product.category}</p>
+            <p className="product-price">{props.product.price} €</p>
         </div>
-
     )
 }

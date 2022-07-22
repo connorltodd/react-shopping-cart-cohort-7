@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Product from "./Product";
+import './Homepage.css';
 
 function Homepage () {
     // Experiment with state in react
@@ -43,15 +44,16 @@ function Homepage () {
 
     return (
         <div>
-            <div>Homepage</div>
             {/* Within react you need to return a value or null */}
             {/* For loop / if statement are statements */}
             {/* ternary operators and array methods return a value */}
             {/* <button onClick={fetchProducts}>Show Products</button> */}
-            {
-            // Put some products inside the state and map them with or without an api
-              products.map((productObject) => <Product key={productObject.id}  product={productObject} />)  
-            }
+            <div className='product-container'>
+                {
+                // Put some products inside the state and map them with or without an api
+                products.map((productObject) => <Product key={productObject.id}  product={productObject} />)  
+                }
+            </div>
             
         </div>
     )
