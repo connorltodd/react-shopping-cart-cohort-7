@@ -1,4 +1,5 @@
 import React from 'react';
+import './Contact.css';
 
 export default function Contact () {
     const [contactInfo, setContactInfo] = React.useState({
@@ -36,29 +37,32 @@ export default function Contact () {
     }
 
     return (
-        <div>
-            <p>Contact us</p>
-            <form onSubmit={handleSubmit}>
-                 <input 
+        <div className='contact-form-container'>
+            <h1 className='contact-form-title'>Contact us</h1>
+            <form className='contact-form' onSubmit={handleSubmit}>
+                 <input
+                    className='contact-form-input' 
                     name='firstName' 
                     placeholder='first name' 
                     value={contactInfo.firstName} 
                     onChange={handleChange} 
                 />
-                <input 
+                <input
+                    className='contact-form-input' 
                     name='lastName' 
                     placeholder='last name' 
-                    value={contactInfo.firstName} 
+                    value={contactInfo.lastName} 
                     onChange={handleChange} 
                 />
                 <textarea 
+                    className='contact-form-textarea'
                     name='message' 
                     placeholder='write your message here' 
                     value={contactInfo.message} 
                     onChange={handleChange} 
                 />
                 <p>{formResponseMessage}</p>
-                <button type="submit" >Submit</button>
+                <button className='contact-form-submit-button' type="submit" >Submit</button>
             </form>
         </div>
     )
