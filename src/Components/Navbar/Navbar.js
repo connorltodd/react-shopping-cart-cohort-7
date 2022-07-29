@@ -1,33 +1,36 @@
 import { Link } from 'react-router-dom';
 import productSearch from '../Assets/search-button.png';
+import './Navbar.css';
 
 export default function Navbar () {
     return (
-        <div>
+        <div className='navbar'>
             <div>
                 <Link to='/' >
                     <button className='navbar-title'>Fake Store</button>
                 </Link>
-                <ul>
-                    <li>Men's</li>
-                    <li>Women's</li>
-                    <li>Children</li>
-                    <li>Sport</li>
+                <ul className='navbar-links-container'>
+                    <li className='navbar-links'>Men's</li>
+                    <li className='navbar-links'>Women's</li>
+                    <li className='navbar-links'>Children</li>
+                    <li className='navbar-links'>Sport</li>
                 </ul>
             </div>
             <div>
-                <div>
-                    <input />
-                    <button>
-                        <img src={productSearch} />
+                <div className='search-container'>
+                    <input className='search-input' placeholder='Search product name...' />
+                    <button className='search-button'>
+                        <img src={productSearch} alt='product button' />
                     </button>
                 </div>
-                <Link to='/cart' >
-                    <button>View Cart</button>
-                </Link>
-                <Link to='/contact' >
-                    <button>Contact us</button>
-                </Link>
+                <div className='navbar-link-buttons-container'>
+                    <Link to='/cart' >
+                        <button className='navbar-link-buttons'>View Cart</button>
+                    </Link>
+                    <Link to='/contact' >
+                        <button className='navbar-link-buttons'>Contact us</button>
+                    </Link>
+                </div>
             </div>
         </div>
     )
