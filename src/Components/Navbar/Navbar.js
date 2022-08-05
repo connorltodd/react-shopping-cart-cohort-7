@@ -1,8 +1,11 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import productSearch from '../Assets/search-button.png';
 import './Navbar.css';
 
-export default function Navbar () {
+export default function Navbar (props) {
+
+
     return (
         <div className='navbar'>
             <div>
@@ -18,8 +21,8 @@ export default function Navbar () {
             </div>
             <div>
                 <div className='search-container'>
-                    <input className='search-input' placeholder='Search product name...' />
-                    <button className='search-button'>
+                    <input onChange={props.handleProductSearchInput} value={props.productSearchValue} className='search-input' placeholder='Search product name...' />
+                    <button onClick={props.productSearchSubmit} className='search-button'>
                         <img src={productSearch} alt='product button' />
                     </button>
                 </div>

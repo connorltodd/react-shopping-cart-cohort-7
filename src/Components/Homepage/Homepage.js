@@ -3,7 +3,7 @@ import axios from 'axios';
 import Product from "../Product/Product";
 import './Homepage.css';
 
-function Homepage () {
+function Homepage (props) {
     // Experiment with state in react
     // React use state is a react hook
     const [products, setProducts] = React.useState([]);
@@ -51,7 +51,15 @@ function Homepage () {
             <div className='product-container'>
                 {
                 // Put some products inside the state and map them with or without an api
-                products.map((productObject) => <Product key={productObject.id}  product={productObject} />)  
+                products
+                .filter((product) => {
+                    return props.productSearchValue !== '' && props.isSearchConfirmed 
+                    ? product.title.toLowerCase().includes(props.productSearchValue.toLowerCase()) ? product : null
+                    : product
+                })
+                .map((productObject) => 
+                    <Product key={productObject.id}  product={productObject} />
+                )  
                 }
             </div>
             
