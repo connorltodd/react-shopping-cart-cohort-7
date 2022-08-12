@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Homepage from './Components/Homepage/Homepage';
 import ProductDetail from './Components/ProductDetail/ProductDetail';
 import Cart from './Components/Cart/Cart';
@@ -33,15 +33,18 @@ function App() {
           productSearchValue={productSearchValue}
         />
         <Routes>
-          <Route exact path='/' element={
+          <Route exact path='/products' element={
             <Homepage 
               isSearchConfirmed={isSearchConfirmed}
               productSearchValue={productSearchValue}
             />
           } />
-          <Route path='/detail' element={<ProductDetail />} />
+          {/* http://localhost:3000/products/12 */}
+          {/* React parameter */}
+          <Route path='/products/:id' element={<ProductDetail />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/contact' element={<Contact />} />
+          <Route path="*" element={<Navigate to='/products' replace />} />
         </Routes>
       </BrowserRouter>
     </div>
