@@ -10,6 +10,8 @@ import './App.css';
 function App() {
   const [productSearchValue, setProductSearchValue] = React.useState('')
   const [isSearchConfirmed, setSearchConfirmation] = React.useState(false);
+  // cart products array
+  const [cartProducts, setCartProducts] = React.useState([]);
 
   const handleProductSearchInput = (event) => {
       const currentSearchInputValue = event.target.value
@@ -18,6 +20,10 @@ function App() {
       if(currentSearchInputValue === '') {
         setSearchConfirmation(false)
       }
+  }
+
+  const addProductToCart = (productToAdd) => {
+    setCartProducts([...cartProducts, productToAdd])
   }
 
 
@@ -41,8 +47,12 @@ function App() {
           } />
           {/* http://localhost:3000/products/12 */}
           {/* React parameter */}
-          <Route path='/products/:id' element={<ProductDetail />} />
-          <Route path='/cart' element={<Cart />} />
+          <Route path='/products/:id' element={
+          <ProductDetail 
+            addProductToCart={addProductToCart}
+          />
+          } />
+          <Route path='/cart' element={<Cart cartProducts={cartProducts} />} />
           <Route path='/contact' element={<Contact />} />
           <Route path="*" element={<Navigate to='/products' replace />} />
         </Routes>

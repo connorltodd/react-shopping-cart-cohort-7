@@ -1,5 +1,12 @@
-export default function Cart () {
+import CartItem from "../CartItem/CartItem";
+
+export default function Cart (props) {
     return (
-        <div>Cart Page</div>
+        <div>
+            {props.cartProducts.map(
+                (productItem) => 
+                <CartItem cartProductInfo={productItem} />
+            )}
+        </div>
     )
 }
