@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import './ProductDetail.css';
 
 export default function ProductDetail (props) {
     const [selectedProduct, setSelectedProduct] = React.useState()
@@ -25,16 +26,19 @@ export default function ProductDetail (props) {
     // Second render after state update (display product as it is stored in state)
 
     return (
-        <div>Product Detail
+        <div className='product-detail-container'>
             {selectedProduct ?
-                <div>
-                    <h1>{selectedProduct.title}</h1>
-                    <img src={selectedProduct.image} />
-                    <p>{selectedProduct.description}</p>
-                    <p> $ {selectedProduct.price}</p>
-                    {/* The following syntax for function calls should be used if you need to send an 
-                    argument to the function to avoid an infinite loop */}
-                    <button onClick={() => props.addProductToCart(selectedProduct)}>Add to cart</button>
+                <div className='product-flex-container'>
+                    <img className='product-detail-image' src={selectedProduct.image} />
+                    <div className='product-detail-right-column'>
+                        <h1 className='product-detail-title'>{selectedProduct.title}</h1>
+                        <p className='product-detail-price'>{selectedProduct.price} €</p>
+                        <p className='product-detail-description-title'>Description</p>
+                        <p>{selectedProduct.description}</p>
+                        {/* The following syntax for function calls should be used if you need to send an 
+                        argument to the function to avoid an infinite loop */}
+                        <button className='product-detail-button' onClick={() => props.addProductToCart(selectedProduct)}>Add to cart</button>
+                    </div>
                 </div>
                 :
                 null
