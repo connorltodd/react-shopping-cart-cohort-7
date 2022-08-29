@@ -23,7 +23,36 @@ function App() {
   }
 
   const addProductToCart = (productToAdd) => {
-    setCartProducts([...cartProducts, productToAdd])
+    const productExistsInCart = cartProducts.find(product => product.id === productToAdd.id)
+    if (productExistsInCart) {
+      // increase the quantity
+      // map goes through each product in array
+      // checks to see if it exists and if it does increment the count by one
+      // otherwise ignore and return the product (if we do not include this step the product will be removed)
+      productExistsInCart.count += 1
+      // the map creates a copy of the array which maintains all of the preexisting products
+      const newCartProducts = cartProducts.map(product => product.id === productToAdd.id ?
+        productExistsInCart : product
+      )
+
+      setCartProducts(newCartProducts)
+    } else {
+      // add the product to the cart with the quantity of 1
+      setCartProducts([
+        // keep everything that is in the array and add a new product at the end
+        // the spread copies the existing products
+        ...cartProducts,
+        { ...productToAdd, count: 1 }
+      ]
+      )
+    }
+  }
+  
+
+  const deleteProduct = (productToDelete) => {
+    console.log(productToDelete)
+    const newCartProducts = cartProducts.filter(cartProduct => cartProduct.id !== productToDelete.id);
+    setCartProducts(newCartProducts)
   }
 
 
@@ -52,7 +81,7 @@ function App() {
             addProductToCart={addProductToCart}
           />
           } />
-          <Route path='/cart' element={<Cart cartProducts={cartProducts} />} />
+          <Route path='/cart' element={<Cart cartProducts={cartProducts} deleteProduct={deleteProduct} />} />
           <Route path='/contact' element={<Contact />} />
           <Route path="*" element={<Navigate to='/products' replace />} />
         </Routes>
