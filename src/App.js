@@ -59,6 +59,11 @@ function App() {
   const productSearchSubmit = (productSearchValue) => {
     setSearchConfirmation(true)
   }
+
+  const removeAllProductsFromCart = () => {
+    setCartProducts([])
+  }
+
   return (
     <div>
       <BrowserRouter>
@@ -81,7 +86,12 @@ function App() {
             addProductToCart={addProductToCart}
           />
           } />
-          <Route path='/cart' element={<Cart cartProducts={cartProducts} deleteProduct={deleteProduct} />} />
+          <Route path='/cart' element={
+            <Cart 
+              cartProducts={cartProducts} 
+              deleteProduct={deleteProduct} 
+              removeAllProductsFromCart={removeAllProductsFromCart} 
+            />} />
           <Route path='/contact' element={<Contact />} />
           <Route path="*" element={<Navigate to='/products' replace />} />
         </Routes>
