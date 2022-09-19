@@ -34,25 +34,27 @@ function App() {
       const newCartProducts = cartProducts.map(product => product.id === productToAdd.id ?
         productExistsInCart : product
       )
-
+      
+      window.localStorage.setItem('cartProducts', JSON.stringify(newCartProducts));
       setCartProducts(newCartProducts)
     } else {
-      // add the product to the cart with the quantity of 1
-      setCartProducts([
+      const newCartProducts = [
         // keep everything that is in the array and add a new product at the end
         // the spread copies the existing products
         ...cartProducts,
         { ...productToAdd, count: 1 }
       ]
-      )
+      // add the product to the cart with the quantity of 1
+      setCartProducts(newCartProducts)
+      window.localStorage.setItem('cartProducts', JSON.stringify(newCartProducts));
     }
   }
   
 
   const deleteProduct = (productToDelete) => {
-    console.log(productToDelete)
     const newCartProducts = cartProducts.filter(cartProduct => cartProduct.id !== productToDelete.id);
     setCartProducts(newCartProducts)
+    window.localStorage.setItem('cartProducts', JSON.stringify(newCartProducts))
   }
 
 
