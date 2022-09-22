@@ -3,7 +3,7 @@ import './CartItem.css';
 export default function CartItem (props) {
     return (
         <>
-            <img className='cart-item-image' src={props.cartProductInfo.image} />
+            <img className='cart-item-image' src={props.cartProductInfo.image} alt={props.cartProductInfo.title} />
             <h1 className='cart-item-title'>{props.cartProductInfo.title}</h1>
             <p>{props.cartProductInfo.price} €</p>
             <p>{props.cartProductInfo.count}</p>

@@ -11,6 +11,7 @@ export default function ProductDetail (props) {
     React.useEffect(() => {
         // console.log('product id', typeof id)
         fetchProduct()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const fetchProduct = () => {
@@ -29,7 +30,7 @@ export default function ProductDetail (props) {
         <div className='product-detail-container'>
             {selectedProduct ?
                 <div className='product-flex-container'>
-                    <img className='product-detail-image' src={selectedProduct.image} />
+                    <img className='product-detail-image' src={selectedProduct.image} alt={selectedProduct.title} />
                     <div className='product-detail-right-column'>
                         <h1 className='product-detail-title'>{selectedProduct.title}</h1>
                         <p className='product-detail-price'>{selectedProduct.price} €</p>
