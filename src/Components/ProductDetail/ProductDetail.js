@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import './ProductDetail.css';
+import { BASE_URL } from '../../helpers/api';
 
 export default function ProductDetail (props) {
     const [selectedProduct, setSelectedProduct] = React.useState()
@@ -15,10 +16,10 @@ export default function ProductDetail (props) {
     }, []);
 
     const fetchProduct = () => {
-        axios.get(`https://fakestoreapi.com/products/${id}`)
+        axios.get(`${BASE_URL}/products/${id}`)
         .then((response) => {
             console.log(response)
-            setSelectedProduct(response.data)
+            setSelectedProduct(response.data[0])
         })
     }
 

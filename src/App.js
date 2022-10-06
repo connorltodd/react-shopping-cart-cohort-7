@@ -35,7 +35,7 @@ function App() {
         productExistsInCart : product
       )
       
-      window.localStorage.setItem('cartProducts', JSON.stringify(newCartProducts));
+     
       setCartProducts(newCartProducts)
     } else {
       const newCartProducts = [
@@ -46,7 +46,6 @@ function App() {
       ]
       // add the product to the cart with the quantity of 1
       setCartProducts(newCartProducts)
-      window.localStorage.setItem('cartProducts', JSON.stringify(newCartProducts));
     }
   }
   
@@ -54,7 +53,6 @@ function App() {
   const deleteProduct = (productToDelete) => {
     const newCartProducts = cartProducts.filter(cartProduct => cartProduct.id !== productToDelete.id);
     setCartProducts(newCartProducts)
-    window.localStorage.setItem('cartProducts', JSON.stringify(newCartProducts))
   }
 
 

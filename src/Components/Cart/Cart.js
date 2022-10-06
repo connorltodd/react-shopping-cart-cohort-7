@@ -51,7 +51,7 @@ function Cart (props) {
                 <p>Price</p>
                 <p>Quantity</p>
                 <p>Remove</p>
-                {JSON.parse(window.localStorage.getItem('cartProducts')).map(
+                {props.cartProducts.map(
                     (productItem) => 
                     <CartItem cartProductInfo={productItem} deleteProduct={props.deleteProduct} />
                 )}
