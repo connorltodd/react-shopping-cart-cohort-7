@@ -12,7 +12,7 @@ function Cart (props) {
         let totalProductCost = 0;
 
         for( let i = 0; i < props.cartProducts.length; i++) {
-            totalProductCost += props.cartProducts[i].price * props.cartProducts[i].count
+            totalProductCost += props.cartProducts[i].price * props.cartProducts[i].quantity
         }
 
         return totalProductCost.toFixed(2);
@@ -53,7 +53,7 @@ function Cart (props) {
                 <p>Remove</p>
                 {props.cartProducts.map(
                     (productItem) => 
-                    <CartItem cartProductInfo={productItem} deleteProduct={props.deleteProduct} />
+                    <CartItem cartProductInfo={productItem} deleteProduct={props.deleteProduct} handleProductInCart={props.handleProductInCart} />
                 )}
                 {props.cartProducts.length ? 
                     <>Total {calculateTotalProductPrice()}</>

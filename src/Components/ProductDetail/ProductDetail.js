@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import './ProductDetail.css';
 import { BASE_URL } from '../../helpers/api';
+import { INCREASE } from '../../helpers/constants';
 
 export default function ProductDetail (props) {
     const [selectedProduct, setSelectedProduct] = React.useState()
@@ -39,7 +40,7 @@ export default function ProductDetail (props) {
                         <p>{selectedProduct.description}</p>
                         {/* The following syntax for function calls should be used if you need to send an 
                         argument to the function to avoid an infinite loop */}
-                        <button className='product-detail-button' onClick={() => props.addProductToCart(selectedProduct)}>Add to cart</button>
+                        <button className='product-detail-button' onClick={() => props.handleProductInCart(selectedProduct, INCREASE)}>Add to cart</button>
                     </div>
                 </div>
                 :
